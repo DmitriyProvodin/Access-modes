@@ -1,17 +1,24 @@
 from src.product import Product
 
 class Category:
-    def __init__(self, name: str):
+    category_count = 0
+    product_count = 0
+
+    def __init__(self, name: str, description: str, products: list[Product]):
         self.name = name
-        self.__products: list[Product] = []
+        self.description = description
+        self.__products = []
+        Category.category_count += 1
+        for product in products:
+            self.add_product(product)
 
     def add_product(self, product: Product) -> None:
         self.__products.append(product)
-        Product.total_products += 1
+        Category.product_count += 1
 
     @property
     def products(self) -> str:
-        return "".join([
-            f"{p.name}, {p.price} руб. Остаток: {p.quantity} шт.\n"
-            for p in self.__products
-        ])
+        return "".join(
+            f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
+            for product in self.__products
+        )
