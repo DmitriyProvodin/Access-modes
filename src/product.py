@@ -1,12 +1,29 @@
 class Product:
-    count = 0
+    total_products = 0
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
-        Product.count += 1
+        Product.total_products += 1
+
+    @classmethod
+    def new_product(cls, data: dict, products: list = None):
+        products = products or []
+        name = data.get("name")
+        description = data.get("description")
+        price = data.get("price")
+        quantity = data.get("quantity")
+
+        for product in products:
+            if product.name == name:
+                product.quantity += quantity
+                if price > product.price:
+                    product.price = price
+                return product
+
+        return cls(name, description, price, quantity)
 
     @property
     def price(self) -> float:
@@ -16,23 +33,9 @@ class Product:
     def price(self, new_price: float) -> None:
         if new_price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
-            return
-        if new_price < self.__price:
+        elif new_price < self.__price:
             confirm = input("Вы уверены, что хотите понизить цену? (y/n): ")
-            if confirm.lower() != 'y':
-                return
-        self.__price = new_price
-
-    @classmethod
-    def new_product(cls, data: dict, existing_products: list | None = None):
-        if existing_products is None:
-            return cls(data["name"], data["description"], data["price"], data["quantity"])
-
-        for product in existing_products:
-            if product.name == data["name"]:
-                product.quantity += data["quantity"]
-                if data["price"] > product.price:
-                    product.price = data["price"]
-                return product
-
-        return cls(data["name"], data["description"], data["price"], data["quantity"])
+            if confirm.lower() == 'y':
+                self.__price = new_price
+        else:
+            self.__price = new_price
