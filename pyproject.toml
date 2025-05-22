@@ -1,19 +1,17 @@
-[project]
-name = "14-2 режимы доступа"
-version = "0.1.0"
-description = ""
-authors = [
-    {name = "Dmitrou",email = "provodind@bk.ru"}
-]
-readme = "README.md"
-requires-python = ">=3.13"
-dependencies = [
-]
-
 [tool.poetry]
-packages = [{include = "14"}]
+name = "oop-ecommerce"
+version = "0.1.0"
+description = "Проект магазина с использованием ООП"
+authors = ["Твоё имя <you@example.com>"]
+packages = [{ include = "src" }]
 
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.2.0"
+pytest-cov = "^5.0.0"
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
