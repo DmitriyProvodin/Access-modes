@@ -1,28 +1,17 @@
-from product import Product
+from typing import List
+from src.product import Product
 
 
 class Category:
-    product_count = 0
-
-    def __init__(self, name: str, description: str, products: list[Product] = None):
+    def __init__(self, name: str, description: str, products: List[Product]):
         self.name = name
         self.description = description
-        self.__products = products if products else []
-        Category.product_count += len(self.__products)
-
-    def add_product(self, product: Product) -> None:
-        if not isinstance(product, Product):
-            raise TypeError("Можно добавлять только объекты класса Product")
-        self.__products.append(product)
-        Category.product_count += 1
+        self.__products = products
 
     @property
-    def products(self) -> str:
-        result = ""
-        for product in self.__products:
-            result += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
-        return result.strip()
+    def products(self) -> List[Product]:
+        return self.__products
 
-    @property
-    def product_count(self):
-        return Category.product_count
+    def __str__(self) -> str:
+        total_quantity = sum(p.quantity for p in self.__products)
+        return f"{self.name}, количество продуктов: {total_quantity} шт."

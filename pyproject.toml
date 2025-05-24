@@ -1,17 +1,6 @@
-[tool.poetry]
-name = "oop-ecommerce"
-version = "0.1.0"
-description = "Проект магазина с использованием ООП"
-authors = ["Твоё имя <you@example.com>"]
-packages = [{ include = "src" }]
-
-[tool.poetry.dependencies]
-python = "^3.10"
-
-[tool.poetry.dev-dependencies]
-pytest = "^8.2.0"
-pytest-cov = "^5.0.0"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests"
+]

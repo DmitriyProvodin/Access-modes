@@ -152,6 +152,18 @@ dev = ["pre-commit", "tox"]
 testing = ["coverage", "pytest", "pytest-benchmark"]
 
 [[package]]
+name = "product"
+version = "0.1.1.1"
+description = ""
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "product-0.1.1.1-py2-none-any.whl", hash = "sha256:7922ab1b27ec4d5b80fe769b04810ca7855cbf9f3e02646c8b0575379d2a26a9"},
+    {file = "product-0.1.1.1.tar.gz", hash = "sha256:a78873fc640e4de4d47346a05e19f6d4318b66a47b65307cd753d4e514e2ce13"},
+]
+
+[[package]]
 name = "pytest"
 version = "8.3.5"
 description = "pytest: simple powerful testing with Python"
@@ -252,4 +264,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "7800cc35f10511b77c29499016111bda3a4c81bfaeb9ab2846a197caac7a8dae"
+content-hash = "a1cbf7f9df9da5f520eb3c3208005530a8b4acdf2ec2549562a8a64d17c7b85d"
